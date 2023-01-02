@@ -1,0 +1,20 @@
+<mat-sidenav-container fullscreen>
+  <mat-toolbar color="primary">
+    <div>
+      <!-- <button mat-raised-button color="primary" routerLink="/home" routerLinkActive="active">Home</button> -->
+      <button mat-raised-button color="primary" routerLink='/login' routerLinkActive="active">Login Page</button>
+      <!-- <button mat-raised-button color="primary" routerLink="/register" routerLinkActive="active">Register Page</button> -->
+      <a mat-raised-button color="primary" [matMenuTriggerFor]="dropdown">About Us</a>
+      <mat-menu #dropdown>
+        <!-- <button mat-menu-item (click)="openDialog()">CEO Messages</button>
+        <button mat-menu-item (click)="openDialog2()">Contact Details</button>  -->
+        <button mat-menu-item>CEO Messages</button>
+        <button mat-menu-item>Contact Details</button>
+
+
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+
+</mat-sidenav-container>

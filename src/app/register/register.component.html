@@ -1,0 +1,145 @@
+<div>
+    <mat-sidenav #sidenav>
+        <h1>Menu Bar</h1>
+        <mat-nav-list (click)="sidenav.close()">
+
+          <a mat-list-item>
+            <mat-icon>add</mat-icon>
+            <button mat-raised-button color="primary" (click)="register()">Registration</button>
+           
+          </a>
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <button mat-icon-button (click)="sidenav.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+    <mat-stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Basic Information</ng-template>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Fullname" formControlName="fullname" required >
+                    <mat-error>enter valid name</mat-error>
+                </mat-form-field><br>
+                
+
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Email" formControlName="email" required>
+                    <mat-error>enter valid email</mat-error>
+                </mat-form-field><br>
+
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Father's Name" formControlName="fathername" required>
+                    <mat-error>enter valid name</mat-error>
+                </mat-form-field><br>
+
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Mother's Name" formControlName="mothername" required>
+                    <mat-error>enter valid name</mat-error>
+                </mat-form-field><br>
+
+                <mat-radio-group aria-label="Select an Gender" formControlName="gender" required><br>
+                    <mat-label>Gender</mat-label>
+                    <mat-radio-button value="Male">Male </mat-radio-button>
+                    <mat-icon matSuffix>male</mat-icon>
+                    <mat-radio-button value="Female">Female </mat-radio-button>
+                    <mat-icon matSuffix>female</mat-icon>
+                    <mat-radio-button value="Other">Other </mat-radio-button>
+                    <mat-icon matSuffix>transgender</mat-icon>
+
+                </mat-radio-group><br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Select DOB</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dob" class="form-control" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field><br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>MobileNo</mat-label>
+                    <mat-icon matSuffix>phone</mat-icon>
+                    <input matInput type="text" placeholder="Mobile Number" formControlName="mobile" required>
+                    <mat-error>enter valid number</mat-error>
+                </mat-form-field><br>
+
+                <div>
+                    <button mat-raised-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Bank Details(optional)</ng-template>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Fullname</mat-label>
+                    <input matInput placeholder="Fullname" formControlName="fullname">
+                    <mat-error>Enter valid data</mat-error>
+                </mat-form-field><br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Account Number</mat-label>
+                    <input matInput placeholder="Account Number" formControlName="accountno">
+                </mat-form-field><br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>BankName </mat-label>
+                    <input matInput placeholder="Bank Name " formControlName="bankname" >
+                </mat-form-field><br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>IFSC Code</mat-label>
+                    <input matInput placeholder="IFSC Code" formControlName="code">
+                </mat-form-field><br>
+
+                <mat-radio-group aria-label="Internet Banking" formControlName="ibanking" ><br>
+                    <mat-label><b>Have Internet Banking</b></mat-label><br>
+
+                    <mat-radio-button value="yes">yes </mat-radio-button><br>
+                    <mat-radio-button value="No">NO </mat-radio-button>
+
+                </mat-radio-group><br>
+
+                <div>
+                    <button mat-raised-button matStepperPrevious>Back </button>
+                    <button mat-raised-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Communication Address</ng-template>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Present Address</mat-label>
+                    <input matInput placeholder="Present Address" formControlName="preaddress"  [maxlength]="maxChars"  #myInput required  >
+                    <mat-error>enter valid present address</mat-error>
+                </mat-form-field><br>
+                <label class="nopadding clrlbl">
+                    Characters Remaining: {{myInput.value.length}} /{{maxChars}}</label>
+
+                <br>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Permanent Address</mat-label>
+                    <input matInput placeholder="Permanent Address" formControlName="permaddress"  [maxlength]="maxChars"  #myInput2 required>
+                    <mat-error>enter valid Permanent address</mat-error>
+                </mat-form-field><br>
+                <label>
+                    Characters Remaining: {{myInput2.value.length}} /{{maxChars}}</label>
+
+                <div>
+                    <button mat-raised-button matStepperPrevious>Back      </button>
+                    <button mat-raised-button (click)="submit()">Submit</button>
+                </div>
+            </form>   
+        </mat-step>
+    </mat-stepper>
+</div>
